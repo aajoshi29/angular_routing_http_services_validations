@@ -1,0 +1,1 @@
+[{"ProductRowId": 100, "ProductId": "Prod-01", "ProductName": "Maggie", "Description": "", "CategoryName": "Food", "BasePrice": "24", "Manufacturer": "Maggi"}, {"ProductRowId": 200, "ProductId": "Prod-02", "ProductName": "Apple", "Description": "description", "CategoryName": "Food", "BasePrice": "100", "Manufacturer": "Apple"}]

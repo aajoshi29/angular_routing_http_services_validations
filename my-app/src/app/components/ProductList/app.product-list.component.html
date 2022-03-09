@@ -1,0 +1,32 @@
+<app-search></app-search>
+<div class="container mt-4">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th *ngFor="let col of columnHeaders">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="products.length > 0">
+      <tr *ngFor="let prd of products">
+        <td *ngFor="let col of columnHeaders">{{ prd[col] }}</td>
+        <div>
+          <button
+            class="btn btn-primary"
+            [routerLink]="['update', prd.ProductRowId]"
+          >
+            Update
+          </button>
+          <button
+            class="btn btn-danger ms-2"
+            (click)="onDelete(prd.ProductRowId)"
+          >
+            Delete
+          </button>
+        </div>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="products.length === 0" class="p-4 text-center">
+    <b>No products found.</b>
+  </p>
+</div>

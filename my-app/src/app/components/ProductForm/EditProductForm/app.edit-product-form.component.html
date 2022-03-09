@@ -1,0 +1,115 @@
+<div class="container">
+  <form [formGroup]="frmProduct" (ngSubmit)="save()">
+    <div class="form-group pt-2">
+      <label><b>Product Row Id</b></label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="ProductRowId"
+      />
+      <div
+        class="alert alert-danger mt-2"
+        *ngIf="
+          frmProduct.controls['ProductRowId'].dirty &&
+          !frmProduct.controls['ProductRowId'].valid
+        "
+      >
+        <p *ngIf="frmProduct.controls['ProductRowId'].errors['required']">
+          Product Row Id must not be empty.
+        </p>
+        <p *ngIf="frmProduct.controls['ProductRowId'].errors['pattern']">
+          Product Row Id must be numeric only.
+        </p>
+        <p *ngIf="frmProduct.controls['ProductRowId'].errors['minlength']">
+          Product Row Id must have 2 digits.
+        </p>
+        <p *ngIf="frmProduct.controls['ProductRowId'].errors['maxlength']">
+          Product Row Id must have atmost 8 digits.
+        </p>
+      </div>
+    </div>
+    <div class="form-group pt-2">
+      <label><b>Product Id</b></label>
+      <input type="text" class="form-control" formControlName="ProductId" />
+      <div
+        class="alert alert-danger mt-2"
+        *ngIf="
+          frmProduct.controls['ProductId'].dirty &&
+          !frmProduct.controls['ProductId'].valid
+        "
+      >
+        <p *ngIf="frmProduct.controls['ProductId'].errors['required']">
+          Product Id must not be empty.
+        </p>
+        <p *ngIf="frmProduct.controls['ProductId'].errors['pattern']">
+          Product Id can only contain letters, numbers, hyphen and underscore.
+        </p>
+        <p *ngIf="!frmProduct.controls['ProductId'].errors['unique']">
+          Product Id must be unique.
+        </p>
+      </div>
+    </div>
+    <div class="form-group pt-2">
+      <label><b>Product Name</b></label>
+      <input type="text" class="form-control" formControlName="ProductName" />
+      <div
+        class="alert alert-danger mt-2"
+        *ngIf="
+          frmProduct.controls['ProductName'].dirty &&
+          !frmProduct.controls['ProductName'].valid
+        "
+      >
+        <p *ngIf="frmProduct.controls['ProductName'].errors['required']">
+          Product Name must not be empty.
+        </p>
+        <p *ngIf="frmProduct.controls['ProductName'].errors['pattern']">
+          Product Name must be text only.
+        </p>
+        <p *ngIf="!frmProduct.controls['ProductName'].errors['case']">
+          Product Name must have first letter in upper case.
+        </p>
+      </div>
+    </div>
+    <div class="form-group pt-2">
+      <label><b>Description</b></label>
+      <input type="text" class="form-control" formControlName="Description" />
+    </div>
+    <div class="form-group pt-2">
+      <label><b>Base Price</b></label>
+      <input type="text" class="form-control" formControlName="BasePrice" />
+    </div>
+    <div class="form-group pt-2">
+      <label><b>Category</b></label>
+      <select type="text" class="form-select" formControlName="CategoryName">
+        <option value="" disabled selected>Select Category</option>
+        <option
+          *ngFor="let category of categories"
+          [value]="category.CategoryName"
+        >
+          {{ category.CategoryName }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group pt-2">
+      <label><b>Manufacturer</b></label>
+      <select type="text" class="form-select" formControlName="Manufacturer">
+        <option value="" disabled selected>Select Manufacturer</option>
+        <option
+          *ngFor="let manufacturer of manufacturers"
+          [value]="manufacturer.ManufacturerName"
+        >
+          {{ manufacturer.ManufacturerName }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group mt-4">
+      <input
+        value="Cancel"
+        type="button"
+        class="btn btn-warning me-2"
+        [routerLink]="['']"
+      />
+      <input type="submit" value="Save" class="btn btn-success" />
+    </div>
+  </form>
+</div>
